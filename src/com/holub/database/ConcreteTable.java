@@ -677,6 +677,11 @@ import com.holub.tools.ArrayIterator;
 				report(t, "Store/Load");
 			}
 			try {
+				testXMLExporter();
+			} catch (Throwable t) {
+				report(t, "XML/Exporter");
+			}
+			try {
 				testJoin();
 			} catch (Throwable t) {
 				report(t, "Join");
@@ -815,6 +820,12 @@ import com.holub.tools.ArrayIterator;
 			Reader in = new FileReader("people");
 			people = new ConcreteTable(new CSVImporter(in));
 			in.close();
+		}
+
+		public void testXMLExporter() throws IOException, ClassNotFoundException {
+			Writer out = new FileWriter("people.xml");
+			people.export(new XMLExporter(out));
+			out.close();
 		}
 
 		public void testJoin() {
