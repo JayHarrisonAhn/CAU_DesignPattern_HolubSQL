@@ -826,6 +826,10 @@ import com.holub.tools.ArrayIterator;
 			Writer out = new FileWriter("people.xml");
 			people.export(new XMLExporter(out));
 			out.close();
+
+			Reader in = new FileReader("people.xml");
+			people = new ConcreteTable(new XMLImporter(in));
+			in.close();
 		}
 
 		public void testJoin() {
