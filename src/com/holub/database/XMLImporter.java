@@ -44,7 +44,13 @@ public class XMLImporter implements Table.Importer {
 
     @Override
     public int loadWidth() throws IOException {
-        return root.getChildNodes().item(1).getChildNodes().getLength();
+        int i = 0;
+        Iterator columnNames = loadColumnNames();
+        while(columnNames.hasNext()) {
+            i++;
+            columnNames.next();
+        }
+        return i;
     }
 
     @Override
@@ -55,7 +61,8 @@ public class XMLImporter implements Table.Importer {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element childElement = (Element) node;
                 String tagName = childElement.getTagName();
-                columns.add(tagName);
+                if(!tagName.trim().equals(""))
+                    columns.add(tagName);
             }
         }
         return new ArrayIterator(columns.toArray());
