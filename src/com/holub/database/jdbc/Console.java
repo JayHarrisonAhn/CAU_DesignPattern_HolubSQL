@@ -1,4 +1,4 @@
-/*  (c) 2004 Allen I. Holub. All rights reserved.
+/**  (c) 2004 Allen I. Holub. All rights reserved.
  *
  *  This code may be used freely by yourself with the following
  *  restrictions:
