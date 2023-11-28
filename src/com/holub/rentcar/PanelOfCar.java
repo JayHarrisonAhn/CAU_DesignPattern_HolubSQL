@@ -1,11 +1,10 @@
 package com.holub.rentcar;
 
-import java.awt.*;
 import javax.swing.*;
 
-public class InfosOfCarsPanel extends JPanel{
-    public JPanel infoOfCarsPanel = new JPanel();
-    InfosOfCarsPanel() {
+public class PanelOfCar extends JPanel{
+    public JPanel panelOfCar = new JPanel();
+    PanelOfCar() {
         CustomObject car1 = new CustomObject("cona", 7001);
         CustomObject car2 = new CustomObject("cona", 7002);  // doesn't need to show to User
         CustomObject car3 = new CustomObject("sportage", 8001);
@@ -35,28 +34,29 @@ public class InfosOfCarsPanel extends JPanel{
         CustomCheckBox checkBox23 = new CustomCheckBox(car4);
 
 
-        infoOfCarsPanel.setLayout(new BoxLayout(infoOfCarsPanel,BoxLayout.Y_AXIS));
-        infoOfCarsPanel.add(checkBox1);
-        infoOfCarsPanel.add(checkBox3);
-        infoOfCarsPanel.add(checkBox4);
-        infoOfCarsPanel.add(checkBox5);
-        infoOfCarsPanel.add(checkBox6);
-        infoOfCarsPanel.add(checkBox7);
-        infoOfCarsPanel.add(checkBox8);
-        infoOfCarsPanel.add(checkBox9);
-        infoOfCarsPanel.add(checkBox10);
-        infoOfCarsPanel.add(checkBox11);
-        infoOfCarsPanel.add(checkBox13);
-        infoOfCarsPanel.add(checkBox14);
-        infoOfCarsPanel.add(checkBox15);
-        infoOfCarsPanel.add(checkBox16);
-        infoOfCarsPanel.add(checkBox17);
-        infoOfCarsPanel.add(checkBox18);
-        infoOfCarsPanel.add(checkBox19);
-        infoOfCarsPanel.add(checkBox20);
-        infoOfCarsPanel.add(checkBox21);
-        infoOfCarsPanel.add(checkBox22);
-        infoOfCarsPanel.add(checkBox23);
+        panelOfCar.setLayout(new BoxLayout(panelOfCar,BoxLayout.Y_AXIS));
+        panelOfCar.add(checkBox1);
+        panelOfCar.add(checkBox3);
+        panelOfCar.add(checkBox4);
+        panelOfCar.add(checkBox5);
+        panelOfCar.add(checkBox6);
+        panelOfCar.add(checkBox7);
+        panelOfCar.add(checkBox8);
+        panelOfCar.add(checkBox9);
+        panelOfCar.add(checkBox10);
+        panelOfCar.add(checkBox11);
+        panelOfCar.add(checkBox12);
+        panelOfCar.add(checkBox13);
+        panelOfCar.add(checkBox14);
+        panelOfCar.add(checkBox15);
+        panelOfCar.add(checkBox16);
+        panelOfCar.add(checkBox17);
+        panelOfCar.add(checkBox18);
+        panelOfCar.add(checkBox19);
+        panelOfCar.add(checkBox20);
+        panelOfCar.add(checkBox21);
+        panelOfCar.add(checkBox22);
+        panelOfCar.add(checkBox23);
 
 
 
@@ -72,7 +72,7 @@ public class InfosOfCarsPanel extends JPanel{
                 System.out.println("Selected: " + checkBox3.getCustomObject());
             }
         });
-        infoOfCarsPanel.add(displayButton);
+        panelOfCar.add(displayButton);
 
 //        JScrollPane infoScroll = new JScrollPane(infoOfCarsPanel);
 //        JPanel buttonPanel = new JPanel();

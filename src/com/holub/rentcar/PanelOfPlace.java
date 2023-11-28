@@ -1,11 +1,10 @@
 package com.holub.rentcar;
 
-import java.awt.*;
 import javax.swing.*;
 
-public class PlacesOfCarsPanel extends JPanel{
-    public JPanel placesOfCarsPanel = new JPanel();
-    PlacesOfCarsPanel() {
+public class PanelOfPlace extends JPanel{
+    public JPanel panelOfPlace = new JPanel();
+    PanelOfPlace() {
 
         CustomObject place1 = new CustomObject("중앙대 정문", 2);
         CustomObject place2 = new CustomObject("중앙대 후문", 3);
@@ -19,15 +18,15 @@ public class PlacesOfCarsPanel extends JPanel{
         CustomCheckBox checkBox4 = new CustomCheckBox(place4);
         CustomCheckBox checkBox5 = new CustomCheckBox(place5);
 
-        placesOfCarsPanel.setLayout(new BoxLayout(placesOfCarsPanel,BoxLayout.Y_AXIS));
-        placesOfCarsPanel.add(checkBox1);
-        placesOfCarsPanel.add(checkBox2);
-        placesOfCarsPanel.add(checkBox3);
-        placesOfCarsPanel.add(checkBox4);
-        placesOfCarsPanel.add(checkBox5);
+        panelOfPlace.setLayout(new BoxLayout(panelOfPlace,BoxLayout.Y_AXIS));
+        panelOfPlace.add(checkBox1);
+        panelOfPlace.add(checkBox2);
+        panelOfPlace.add(checkBox3);
+        panelOfPlace.add(checkBox4);
+        panelOfPlace.add(checkBox5);
 
         JButton displayButton = new JButton("Select");
-        placesOfCarsPanel.add(displayButton);
+        panelOfPlace.add(displayButton);
         displayButton.addActionListener(e -> {
             if (checkBox1.isSelected()) {
                 System.out.println("Selected: " + checkBox1.getCustomObject());

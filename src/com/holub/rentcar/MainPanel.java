@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 public class MainPanel extends JFrame implements ActionListener {
     //    public JPanel mainPanel = new JPanel();
     public JPanel mainPanel = new JPanel(new CardLayout());
-    private InfosOfCarsPanel infosOfCarsPanel;
-    private PlacesOfCarsPanel placesOfCarsPanel;
-    private TimeOfCarsPanel timeOfCarsPanel;
-    private ResultOfCarsPanel resultOfCarsPanel;
+    private PanelOfCar panelOfCar;
+    private PanelOfPlace panelOfPlace;
+    private PanelOfTime panelOfTime;
+    private PanelOfResult panelOfResult;
     public JButton info = new JButton("차량정보");
     public JButton place = new JButton("위치");
     public JButton time = new JButton("대여시간");
@@ -19,14 +19,14 @@ public class MainPanel extends JFrame implements ActionListener {
     String shapeString = "차량정보";
 
     MainPanel() {
-        infosOfCarsPanel = new InfosOfCarsPanel();
-        placesOfCarsPanel = new PlacesOfCarsPanel();
-        timeOfCarsPanel = new TimeOfCarsPanel();
-        resultOfCarsPanel = new ResultOfCarsPanel();
-        JScrollPane infoScroll = new JScrollPane(infosOfCarsPanel.infoOfCarsPanel);
-        JScrollPane placeScroll = new JScrollPane(placesOfCarsPanel.placesOfCarsPanel);
-        JScrollPane timeScroll = new JScrollPane(timeOfCarsPanel.timeOfCarsPanel);
-        JScrollPane resultScroll = new JScrollPane(resultOfCarsPanel.resultOfCarsPanel);
+        panelOfCar = new PanelOfCar();
+        panelOfPlace = new PanelOfPlace();
+        panelOfTime = new PanelOfTime();
+        panelOfResult = new PanelOfResult();
+        JScrollPane infoScroll = new JScrollPane(panelOfCar.panelOfCar);
+        JScrollPane placeScroll = new JScrollPane(panelOfPlace.panelOfPlace);
+        JScrollPane timeScroll = new JScrollPane(panelOfTime.panelOfTime);
+        JScrollPane resultScroll = new JScrollPane(panelOfResult.panelOfResult);
         mainPanel.add(infoScroll, "info");
         mainPanel.add(placeScroll, "place");
         mainPanel.add(timeScroll, "time");
