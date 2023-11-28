@@ -11,12 +11,12 @@ import java.awt.*;
 import java.util.Observable;
 
 public class MenuView extends MainFrameComponentView {
-    PanelOfCars panelOfCar = new PanelOfCars(model);
-    PanelOfPlaces panelOfPlace = new PanelOfPlaces();
+    PanelOfCars panelOfCar = new PanelOfCars(model, controller);
+    PanelOfPlaces panelOfPlace = new PanelOfPlaces(model, controller);
     PanelOfTimes panelOfTime = new PanelOfTimes();
     PanelOfResults panelOfResult = new PanelOfResults();
-    MenuView(MainFrameModel model) {
-        super(model);
+    MenuView(MainFrameModel model, MainFrameController controller) {
+        super(model, controller);
         setLayout(new CardLayout());
         add(new JScrollPane(panelOfCar.panelOfCar), "info");
         add(new JScrollPane(panelOfPlace.panelOfPlace), "location");
@@ -27,16 +27,7 @@ public class MenuView extends MainFrameComponentView {
     public void update(Observable o, Object arg) {
         CardLayout cardLayout = (CardLayout) getLayout();
         cardLayout.show(this, model.currentMenu);
-        this.panelOfCar.update(o, arg);
+//        this.panelOfCar.update(o, arg);
 //        this.panelOfPlace.update(o, arg);
-    }
-
-    @Override
-    public void setController(MainFrameController controller) {
-        super.setController(controller);
-        this.panelOfCar.setController(controller);
-//        this.panelOfPlace.setController(controller);
-//        this.panelOfTime.setController(controller);
-//        this.panelOfResult.setController(controller);
     }
 }

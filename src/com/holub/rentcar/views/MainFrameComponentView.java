@@ -9,11 +9,10 @@ import java.util.Observer;
 public abstract class MainFrameComponentView extends JPanel implements Observer {
     MainFrameController controller;
     MainFrameModel model;
-    protected MainFrameComponentView(MainFrameModel model) {
+    protected MainFrameComponentView(MainFrameModel model, MainFrameController controller) {
         super();
         this.model = model;
-    }
-    public void setController(MainFrameController controller) {
         this.controller = controller;
+        this.model.addObserver(this);
     }
 }

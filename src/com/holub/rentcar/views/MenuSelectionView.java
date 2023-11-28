@@ -12,8 +12,8 @@ public class MenuSelectionView extends MainFrameComponentView {
     public JButton locationBtn = new JButton("위치");
     public JButton timeBtn = new JButton("대여시간");
     public JButton resultBtn = new JButton("결과");
-    MenuSelectionView(MainFrameModel model) {
-        super(model);
+    MenuSelectionView(MainFrameModel model, MainFrameController controller) {
+        super(model, controller);
 
         Box b1 = Box.createHorizontalBox();
         b1.add(Box.createHorizontalGlue());

@@ -17,8 +17,7 @@ public class MainFrameController extends JFrame implements ActionListener {
     MainFrameModel model = new MainFrameModel();
     MainFrameView view;
     MainFrameController() {
-        this.view = new MainFrameView(model);
-        this.view.setController(this);
+        this.view = new MainFrameView(model, this);
         this.view.menuSelectionView.infoBtn.addActionListener(this);
         this.view.menuSelectionView.locationBtn.addActionListener(this);
         this.view.menuSelectionView.timeBtn.addActionListener(this);
@@ -51,6 +50,9 @@ public class MainFrameController extends JFrame implements ActionListener {
 
     public void setCarInfoCheckbox(int i, boolean checked) {
         model.checkInfo(i, checked);
+    }
+    public void setPlaceInfoCheckbox(int i, boolean checked) {
+        model.checkPlace(i, checked);
     }
 
     public static void main(String[] args) {

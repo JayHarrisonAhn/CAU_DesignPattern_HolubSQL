@@ -1,28 +1,40 @@
 package com.holub.rentcar.views;
 
-import javax.swing.*;
+import com.holub.rentcar.MainFrameController;
+import com.holub.rentcar.MainFrameModel;
+import com.holub.rentcar.models.Selection;
+import com.holub.rentcar.models.row.CarType;
+import com.holub.rentcar.models.row.Place;
 
-public class PanelOfPlaces extends JPanel {
+import javax.swing.*;
+import java.util.Observable;
+
+public class PanelOfPlaces extends MainFrameComponentView {
     public JPanel panelOfPlace = new JPanel();
 
-    PanelOfPlaces() {
-        String place1 = "중앙대 정문";
-        String place2 = "중앙대 후문";
-        String place3 = "중앙대 병원";
-        String place4 = "숭실대";
-        String place5 = "서울대입구";
-
-        JCheckBox checkBox1 = new JCheckBox(place1);
-        JCheckBox checkBox2 = new JCheckBox(place2);
-        JCheckBox checkBox3 = new JCheckBox(place3);
-        JCheckBox checkBox4 = new JCheckBox(place4);
-        JCheckBox checkBox5 = new JCheckBox(place5);
-
+    PanelOfPlaces(MainFrameModel model, MainFrameController controller) {
+        super(model, controller);
         panelOfPlace.setLayout(new BoxLayout(panelOfPlace, BoxLayout.Y_AXIS));
-        panelOfPlace.add(checkBox1);
-        panelOfPlace.add(checkBox2);
-        panelOfPlace.add(checkBox3);
-        panelOfPlace.add(checkBox4);
-        panelOfPlace.add(checkBox5);
+        updateCheckboxes();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        updateCheckboxes();
+    }
+    void updateCheckboxes() {
+        panelOfPlace.removeAll();
+        for(int i=0; i<model.places.size(); i++) {
+            Selection<Place> place = model.places.get(i);
+            JCheckBox checkBox = new JCheckBox(place.obj.name);
+            checkBox.setSelected(model.places.get(i).selected);
+            int finalI = i;
+            checkBox.addActionListener(event -> {
+                controller.setPlaceInfoCheckbox(finalI, !model.places.get(finalI).selected);
+            });
+            panelOfPlace.add(checkBox);
+        }
+        panelOfPlace.revalidate();
+        panelOfPlace.repaint();
     }
 }

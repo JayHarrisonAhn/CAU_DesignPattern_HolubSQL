@@ -1,5 +1,6 @@
 package com.holub.rentcar.views;
 
+import com.holub.rentcar.MainFrameController;
 import com.holub.rentcar.MainFrameModel;
 import com.holub.rentcar.models.row.CarType;
 import com.holub.rentcar.models.Selection;
@@ -10,8 +11,8 @@ import java.util.Observable;
 
 public class PanelOfCars extends MainFrameComponentView {
     public JPanel panelOfCar = new JPanel();
-    PanelOfCars(MainFrameModel model) {
-        super(model);
+    PanelOfCars(MainFrameModel model, MainFrameController controller) {
+        super(model, controller);
         panelOfCar.setLayout(new BoxLayout(panelOfCar, BoxLayout.Y_AXIS));
         updateCheckboxes();
     }
@@ -23,6 +24,7 @@ public class PanelOfCars extends MainFrameComponentView {
     }
 
     void updateCheckboxes() {
+        panelOfCar.removeAll();
         for(int i=0; i<model.infos.size(); i++) {
             Selection<CarType> info = model.infos.get(i);
             JCheckBox checkBox = new JCheckBox(info.obj.name);
@@ -33,5 +35,7 @@ public class PanelOfCars extends MainFrameComponentView {
             });
             panelOfCar.add(checkBox);
         }
+        panelOfCar.revalidate();
+        panelOfCar.repaint();
     }
 }
