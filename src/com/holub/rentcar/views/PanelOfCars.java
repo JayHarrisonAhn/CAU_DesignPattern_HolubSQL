@@ -1,21 +1,30 @@
 package com.holub.rentcar.views;
 
+import com.holub.rentcar.MainFrameModel;
+import com.holub.rentcar.Selection;
+
 import javax.swing.*;
+import java.util.Observable;
 
-public class PanelOfCars extends JPanel {
+public class PanelOfCars extends MainFrameComponentView {
     public JPanel panelOfCar = new JPanel();
-    PanelOfCars() {
-        String car1 = "cona";
-        String car2 = "sportage";
-        String car3 = "ev6";
-
-        JCheckBox checkBox1 = new JCheckBox(car1);
-        JCheckBox checkBox2 = new JCheckBox(car2);
-        JCheckBox checkBox3 = new JCheckBox(car3);
-
+    PanelOfCars(MainFrameModel model) {
+        super(model);
         panelOfCar.setLayout(new BoxLayout(panelOfCar, BoxLayout.Y_AXIS));
-        panelOfCar.add(checkBox1);
-        panelOfCar.add(checkBox2);
-        panelOfCar.add(checkBox3);
+        updateCheckboxes();
+    }
+
+    public void update(Observable o, Object arg) {
+        if(o instanceof MainFrameModel) {
+            updateCheckboxes();
+        }
+    }
+
+    void updateCheckboxes() {
+        panelOfCar.removeAll();
+        for(Selection info: model.infos) {
+            JCheckBox checkBox = new JCheckBox(info.key);
+            panelOfCar.add(checkBox);
+        }
     }
 }

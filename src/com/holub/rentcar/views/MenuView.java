@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.Observable;
 
 public class MenuView extends MainFrameComponentView {
-    PanelOfCars panelOfCar = new PanelOfCars();
+    PanelOfCars panelOfCar = new PanelOfCars(model);
     PanelOfPlaces panelOfPlace = new PanelOfPlaces();
     PanelOfTimes panelOfTime = new PanelOfTimes();
     PanelOfResults panelOfResult = new PanelOfResults();

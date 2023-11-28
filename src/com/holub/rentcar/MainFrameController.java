@@ -46,7 +46,6 @@ public class MainFrameController extends JFrame implements ActionListener {
         } else if (e.getSource().equals(view.currentTime)){
 
         }
-
     }
 
     public static void main(String[] args) {
