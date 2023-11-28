@@ -13,4 +13,7 @@ public abstract class MainFrameComponentView extends JPanel implements Observer 
         super();
         this.model = model;
     }
+    public void setController(MainFrameController controller) {
+        this.controller = controller;
+    }
 }

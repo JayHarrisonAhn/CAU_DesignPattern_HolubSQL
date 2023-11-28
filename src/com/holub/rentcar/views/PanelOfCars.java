@@ -1,9 +1,11 @@
 package com.holub.rentcar.views;
 
 import com.holub.rentcar.MainFrameModel;
-import com.holub.rentcar.Selection;
+import com.holub.rentcar.models.row.CarType;
+import com.holub.rentcar.models.Selection;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class PanelOfCars extends MainFrameComponentView {
@@ -21,9 +23,14 @@ public class PanelOfCars extends MainFrameComponentView {
     }
 
     void updateCheckboxes() {
-        panelOfCar.removeAll();
-        for(Selection info: model.infos) {
-            JCheckBox checkBox = new JCheckBox(info.key);
+        for(int i=0; i<model.infos.size(); i++) {
+            Selection<CarType> info = model.infos.get(i);
+            JCheckBox checkBox = new JCheckBox(info.obj.name);
+            checkBox.setSelected(model.infos.get(i).selected);
+            int finalI = i;
+            checkBox.addActionListener(event -> {
+                controller.setCarInfoCheckbox(finalI, !model.infos.get(finalI).selected);
+            });
             panelOfCar.add(checkBox);
         }
     }

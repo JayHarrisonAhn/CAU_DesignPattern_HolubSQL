@@ -1,5 +1,6 @@
 package com.holub.rentcar.views;
 
+import com.holub.rentcar.MainFrameController;
 import com.holub.rentcar.MainFrameModel;
 import com.holub.rentcar.PanelOfPlace;
 import com.holub.rentcar.PanelOfTime;
@@ -26,5 +27,16 @@ public class MenuView extends MainFrameComponentView {
     public void update(Observable o, Object arg) {
         CardLayout cardLayout = (CardLayout) getLayout();
         cardLayout.show(this, model.currentMenu);
+        this.panelOfCar.update(o, arg);
+//        this.panelOfPlace.update(o, arg);
+    }
+
+    @Override
+    public void setController(MainFrameController controller) {
+        super.setController(controller);
+        this.panelOfCar.setController(controller);
+//        this.panelOfPlace.setController(controller);
+//        this.panelOfTime.setController(controller);
+//        this.panelOfResult.setController(controller);
     }
 }

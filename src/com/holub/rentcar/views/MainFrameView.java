@@ -42,4 +42,11 @@ public class MainFrameView extends MainFrameComponentView {
             System.out.println("time");
         }
     }
+
+    @Override
+    public void setController(MainFrameController controller) {
+        super.setController(controller);
+        this.menuSelectionView.setController(controller);
+        this.menuView.setController(controller);
+    }
 }
