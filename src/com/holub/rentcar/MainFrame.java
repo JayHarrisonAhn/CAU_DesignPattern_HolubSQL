@@ -53,8 +53,6 @@ public class MainFrame extends JFrame{
         buttonBox = new Box(BoxLayout.Y_AXIS);
         buttonBox.add(Box.createVerticalStrut(200));
         buttonBox.add(toolBox);
-//        getContentPane().add(mainPanel);
-//        pack();
         add(panel.mainPanel, BorderLayout.CENTER);
         add(buttonBox, BorderLayout.WEST);
         setVisible(true);

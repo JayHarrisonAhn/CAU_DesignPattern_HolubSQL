@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainFrameController extends JFrame implements ActionListener {
     MainFrameModel model = new MainFrameModel();
@@ -38,7 +41,12 @@ public class MainFrameController extends JFrame implements ActionListener {
             model.changeMenu("time");
         } else if (e.getSource().equals(view.menuSelectionView.resultBtn)) {
             model.changeMenu("result");
+        } else if (e.getSource().equals(view.selectBtn)){
+
+        } else if (e.getSource().equals(view.currentTime)){
+
         }
+
     }
 
     public static void main(String[] args) {

@@ -19,31 +19,29 @@ public class MenuSelectionView extends MainFrameComponentView {
         b1.add(Box.createHorizontalGlue());
         b1.add(infoBtn);
         b1.add(Box.createHorizontalGlue());
-
         Box b2 = Box.createHorizontalBox();
         b2.add(Box.createHorizontalGlue());
         b2.add(locationBtn);
         b2.add(Box.createHorizontalGlue());
-
         Box b3 = Box.createHorizontalBox();
         b3.add(Box.createHorizontalGlue());
         b3.add(timeBtn);
         b3.add(Box.createHorizontalGlue());
-
         Box b4 = Box.createHorizontalBox();
         b4.add(Box.createHorizontalGlue());
         b4.add(resultBtn);
         b4.add(Box.createHorizontalGlue());
 
         Box toolBox = new Box(BoxLayout.Y_AXIS);
+        Box buttonBox = new Box(BoxLayout.Y_AXIS);
         toolBox.add(b1);
         toolBox.add(b2);
         toolBox.add(b3);
         toolBox.add(b4);
 
-        Box buttonBox = new Box(BoxLayout.Y_AXIS);
-        buttonBox.add(Box.createVerticalStrut(200));
+        buttonBox.add(Box.createVerticalStrut(200)); // adjust height of buttonBox
         buttonBox.add(toolBox);
+
         add(buttonBox, BorderLayout.WEST);
     }
 
