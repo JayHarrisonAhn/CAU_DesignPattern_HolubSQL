@@ -11,10 +11,10 @@ import java.awt.*;
 import java.util.Observable;
 
 public class MenuView extends MainFrameComponentView {
-    PanelOfCars panelOfCar = new PanelOfCars(model, controller);
-    PanelOfPlaces panelOfPlace = new PanelOfPlaces(model, controller);
-    PanelOfTimes panelOfTime = new PanelOfTimes();
-    PanelOfResults panelOfResult = new PanelOfResults();
+    public PanelOfCars panelOfCar = new PanelOfCars(model, controller);
+    public PanelOfPlaces panelOfPlace = new PanelOfPlaces(model, controller);
+    public PanelOfTimes panelOfTime = new PanelOfTimes(model, controller);
+    public PanelOfResults panelOfResult = new PanelOfResults();
     MenuView(MainFrameModel model, MainFrameController controller) {
         super(model, controller);
         setLayout(new CardLayout());
@@ -27,7 +27,5 @@ public class MenuView extends MainFrameComponentView {
     public void update(Observable o, Object arg) {
         CardLayout cardLayout = (CardLayout) getLayout();
         cardLayout.show(this, model.currentMenu);
-//        this.panelOfCar.update(o, arg);
-//        this.panelOfPlace.update(o, arg);
     }
 }

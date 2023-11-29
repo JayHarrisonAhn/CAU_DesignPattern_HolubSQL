@@ -22,6 +22,9 @@ public class MainFrameController extends JFrame implements ActionListener {
         this.view.menuSelectionView.locationBtn.addActionListener(this);
         this.view.menuSelectionView.timeBtn.addActionListener(this);
         this.view.menuSelectionView.resultBtn.addActionListener(this);
+        this.view.menuView.panelOfTime.yearSpinner.addChangeListener(e->setTime());
+        this.view.menuView.panelOfTime.monthSpinner.addChangeListener(e->setTime());
+        this.view.menuView.panelOfTime.daySpinner.addChangeListener(e->setTime());
         model.addObserver(this.view);
 
         setSize(500, 500);
@@ -53,6 +56,12 @@ public class MainFrameController extends JFrame implements ActionListener {
     }
     public void setPlaceInfoCheckbox(int i, boolean checked) {
         model.checkPlace(i, checked);
+    }
+    public void setTime() {
+        int year = (int) this.view.menuView.panelOfTime.yearSpinner.getValue();
+        int month = (int) this.view.menuView.panelOfTime.monthSpinner.getValue();
+        int day = (int) this.view.menuView.panelOfTime.daySpinner.getValue();
+        model.changeTime(year, month, day);
     }
 
     public static void main(String[] args) {

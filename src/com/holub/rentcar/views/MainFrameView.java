@@ -11,7 +11,7 @@ public class MainFrameView extends MainFrameComponentView {
     public MenuSelectionView menuSelectionView;
     public JButton selectBtn = new JButton("Select");
     public JButton currentTime = new JButton("currentTime");
-    MenuView menuView;
+    public MenuView menuView;
     public MainFrameView(MainFrameModel model, MainFrameController controller) {
         super(model, controller);
         this.menuSelectionView = new MenuSelectionView(model, controller);
@@ -34,9 +34,9 @@ public class MainFrameView extends MainFrameComponentView {
     }
 
     public void update(Observable o, Object arg) {
-        if(model.currentMenu == "time") {
-            this.add(currentTime, BorderLayout.SOUTH);
-            System.out.println("time");
-        }
+//        if(model.currentMenu == "time") {
+//            this.add(currentTime, BorderLayout.SOUTH);
+//            System.out.println("time");
+//        }
     }
 }

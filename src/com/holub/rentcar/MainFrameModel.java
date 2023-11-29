@@ -13,7 +13,9 @@ public class MainFrameModel extends Observable {
     public String currentMenu = "test";
     public ArrayList<Selection<CarType>> infos = new ArrayList<>();
     public ArrayList<Selection<Place>> places = new ArrayList<>();
-    public String time;
+    public int year = 2023;
+    public int month = 12;
+    public int day = 12;
 
     MainFrameModel() {
         CarTypesFactory carTypesFactory = new CarTypesFactory();
@@ -52,8 +54,10 @@ public class MainFrameModel extends Observable {
         notifyObservers();
     }
 
-    public void changeTime(String time) {
-        this.time = time;
+    public void changeTime(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
         setChanged();
         notifyObservers();
     }
