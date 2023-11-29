@@ -26,7 +26,7 @@ public class MainFrameModel extends Observable {
     public int month;
     public int day;
 
-    MainFrameModel() {
+    public MainFrameModel() {
         CarTypesFactory carTypesFactory = new CarTypesFactory();
         ArrayList<CarType> carTypes = carTypesFactory.createFrom(RentcarDB.orm.carTypes);
         this.infos.clear();

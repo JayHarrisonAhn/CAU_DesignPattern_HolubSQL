@@ -1,54 +1,37 @@
 package com.holub.test;
 
-import com.holub.database.*;
+import com.holub.database.Cursor;
+import com.holub.database.Table;
+import com.holub.rentcar.RentcarDB;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.logging.Handler;
-import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RentcarDBTest {
-    TableHandler distinctHandler;
-    Table table;
+
     @BeforeEach
     void setUp() {
-        distinctHandler = new DistinctHandler();
-        table = new ConcreteTable("table", new String[]{ "name", "grade", "id", "score"});
-        table.insert(new String[]{"bang", "4", "15411541", "90"});
-        table.insert(new String[]{"ahn", "4", "12345678", "60"});
-        table.insert(new String[]{"jeong", "4", "43215678", "70"});
-        table.insert(new String[]{"bang", "4", "15411541", "90"});
+        RentcarDB.orm.createScheme();
     }
+
     @Test
-    void test() {
-        try {
-            Table expectedTable = new ConcreteTable("table", new String[]{ "name", "grade", "id", "score"});
-            expectedTable.insert(new String[]{"bang", "4", "15411541", "90"});
-            expectedTable.insert(new String[]{"ahn", "4", "12345678", "60"});
-            expectedTable.insert(new String[]{"jeong", "4", "43215678", "70"});
+    void testCreateScheme() {
+        assertNotNull(RentcarDB.orm.spot);
+        assertNotNull(RentcarDB.orm.carTypes);
+        assertNotNull(RentcarDB.orm.car);
+        assertNotNull(RentcarDB.orm.reservation);
+        assertNotNull(RentcarDB.orm.user);
 
-            Table targetTable = distinctHandler.handleRequest(table);
-
-            Cursor origin = expectedTable.rows();
-            Cursor target = targetTable.rows();
-
-            while (target.advance() && origin.advance()) {
-                Iterator<?> targetIter = target.columns();
-                Iterator<?> originIter = origin.columns();
-
-                while (targetIter.hasNext() && originIter.hasNext()) {
-                    String targetItem = String.valueOf(targetIter.next());
-                    String originItem = String.valueOf(originIter.next());
-                    assertEquals(targetItem, originItem);
-                }
-            }
-
-            if(target.advance() || origin.advance()){
-                fail("distinct keyword doesn't work correctly.");
-            }
-        } catch (Exception e) {
-            System.out.println("distinct keyword doesn't work correctly.");
-        }
+        assertEquals(4, countRows(RentcarDB.orm.spot));
+        assertEquals(5, countRows(RentcarDB.orm.carTypes));
+        assertEquals(8, countRows(RentcarDB.orm.car));
+        assertEquals(2, countRows(RentcarDB.orm.reservation));
+        assertEquals(5, countRows(RentcarDB.orm.user));
+    }
+    private int countRows(Table table) {
+        int count = 0;
+        for (Cursor cursor = table.rows(); cursor.advance(); count++);
+        return count;
     }
 }

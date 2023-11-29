@@ -13,13 +13,13 @@ public class RentcarDB {
         createScheme();
     }
     public static RentcarDB orm = new RentcarDB();
-    Table spot;
-    Table carTypes;
-    Table car;
-    Table reservation;
-    Table user;
+    public Table spot;
+    public Table carTypes;
+    public Table car;
+    public Table reservation;
+    public Table user;
 
-    void createScheme() {
+    public void createScheme() {
         this.spot = TableFactory.create("spot", new String[] { "spotId", "spotName", "address" });
         this.spot.insert(new Object[] { "sadang", "사당점", "" });
         this.spot.insert(new Object[] { "seoulstation", "서울역점", "" });
