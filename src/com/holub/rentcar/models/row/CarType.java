@@ -7,4 +7,12 @@ public class CarType extends Row {
         this.id = type;
         this.name = name;
     }
+
+    public Object[] toArray() {
+        return new Object[] { id, name };
+    }
+
+    public String[] columnNames() {
+        return new String[] { "carTypeId", "name" };
+    }
 }

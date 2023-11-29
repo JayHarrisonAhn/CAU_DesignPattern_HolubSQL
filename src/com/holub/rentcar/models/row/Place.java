@@ -9,4 +9,12 @@ public class Place extends Row {
         this.name = name;
         this.address = address;
     }
+
+    public Object[] toArray() {
+        return new Object[] { spotId, name, address };
+    }
+
+    public String[] columnNames() {
+        return new String[] { "spotId", "name", "address" };
+    }
 }

@@ -9,4 +9,12 @@ public class Car extends Row {
         this.place = place;
         this.type = new CarType(type, name);
     }
+
+    public Object[] toArray() {
+        return new String[] { id, type.name, place };
+    }
+
+    public String[] columnNames() {
+        return new String[] { "id", "carTypeId", "name", "spotId" };
+    }
 }

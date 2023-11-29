@@ -62,8 +62,6 @@ public class MainFrameModel extends Observable {
         this.results = carsFactory.createFrom(resultFinder.getResult());
         setChanged();
         notifyObservers();
-
-        System.out.println(resultFinder.getResult().toString());
     }
 
     public void changeMenu(String menuId) {
