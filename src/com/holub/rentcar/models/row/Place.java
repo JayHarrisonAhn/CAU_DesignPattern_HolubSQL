@@ -13,8 +13,4 @@ public class Place extends Row {
     public Object[] toArray() {
         return new Object[] { spotId, name, address };
     }
-
-    public String[] columnNames() {
-        return new String[] { "spotId", "name", "address" };
-    }
 }

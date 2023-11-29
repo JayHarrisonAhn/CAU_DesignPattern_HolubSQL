@@ -53,6 +53,15 @@ public class RentcarFinder {
         return this;
     }
 
+    public RentcarFinder spots(Set<String> spots) {
+        this.result = result.select(new Selector.Adapter() {
+            public boolean approve(Cursor[] tables) {
+                return spots.contains(tables[0].column("spotId"));
+            }
+        });
+        return this;
+    }
+
     public RentcarFinder types(Set<String> types) {
         this.result = result.select(new Selector.Adapter() {
             public boolean approve(Cursor[] tables) {

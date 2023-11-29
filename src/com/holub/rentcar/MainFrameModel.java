@@ -58,6 +58,16 @@ public class MainFrameModel extends Observable {
             resultFinder = resultFinder.types(infoSet);
         }
 
+        Set<String> placeSet = new HashSet<>();
+        for (Selection<Place> placeSelection : places) {
+            if (placeSelection.selected) {
+                placeSet.add(placeSelection.obj.spotId);
+            }
+        }
+        if(!placeSet.isEmpty()) {
+            resultFinder = resultFinder.spots(placeSet);
+        }
+
         CarsFactory carsFactory = new CarsFactory();
         this.results = carsFactory.createFrom(resultFinder.getResult());
         setChanged();

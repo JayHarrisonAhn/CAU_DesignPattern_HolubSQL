@@ -13,8 +13,4 @@ public class Car extends Row {
     public Object[] toArray() {
         return new String[] { id, type.name, place };
     }
-
-    public String[] columnNames() {
-        return new String[] { "id", "carTypeId", "name", "spotId" };
-    }
 }
