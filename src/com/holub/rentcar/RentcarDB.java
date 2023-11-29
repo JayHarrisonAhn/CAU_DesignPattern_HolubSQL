@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentcarDB {
-    private RentcarDB() { }
+    private RentcarDB() {
+        createScheme();
+    }
     public static RentcarDB orm = new RentcarDB();
     Table spot;
+    Table carTypes;
     Table car;
     Table reservation;
     Table user;
@@ -22,6 +25,13 @@ public class RentcarDB {
         this.spot.insert(new Object[] { "seoulstation", "서울역점", "" });
         this.spot.insert(new Object[] { "seoulip", "서울대입구역점", "" });
         this.spot.insert(new Object[] { "sangdo", "상도점", "" });
+
+        this.carTypes = TableFactory.create("carTypes", new String[] { "carTypeId", "name" });
+        this.carTypes.insert(new Object[] { "avante", "아반떼" });
+        this.carTypes.insert(new Object[] { "sonata", "쏘나타" });
+        this.carTypes.insert(new Object[] { "grandeur", "그랜저" });
+        this.carTypes.insert(new Object[] { "cona", "코나" });
+        this.carTypes.insert(new Object[] { "pony", "포니" });
 
         this.car = TableFactory.create("car", new String[] { "carId", "carType", "spotId" });
         this.car.insert(new Object[] { "134허3831", "avante", "sangdo" });

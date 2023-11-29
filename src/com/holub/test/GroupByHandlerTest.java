@@ -1,5 +1,4 @@
 import com.holub.database.*;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

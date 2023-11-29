@@ -7,22 +7,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.*;
 
-public class TimeOfCarsPanel extends JPanel{
-    public JPanel timeOfCarsPanel = new JPanel();
-    TimeOfCarsPanel() {
+public class PanelOfTime extends JPanel{
+    public JPanel panelOfTime = new JPanel();
+    PanelOfTime() {
         JLabel dateTimeLabel = new JLabel("Current Date and Time: ");
         JButton currentTime = new JButton("현재시간");
         JSpinner yearSpinner = new JSpinner(new SpinnerNumberModel(2023, 1900, 2100, 1));
         JSpinner monthSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 12, 1));
         JSpinner daySpinner = new JSpinner(new SpinnerNumberModel(1, 1, 31, 1));
 
-        timeOfCarsPanel.setLayout(new BoxLayout(timeOfCarsPanel,BoxLayout.Y_AXIS));
-        timeOfCarsPanel.add(new JLabel("Year : "));
-        timeOfCarsPanel.add(yearSpinner);
-        timeOfCarsPanel.add(new JLabel("Month : "));
-        timeOfCarsPanel.add(monthSpinner);
-        timeOfCarsPanel.add(new JLabel("Day : "));
-        timeOfCarsPanel.add(daySpinner);
+        panelOfTime.setLayout(new BoxLayout(panelOfTime,BoxLayout.Y_AXIS));
+        panelOfTime.add(new JLabel("Year : "));
+        panelOfTime.add(yearSpinner);
+        panelOfTime.add(new JLabel("Month : "));
+        panelOfTime.add(monthSpinner);
+        panelOfTime.add(new JLabel("Day : "));
+        panelOfTime.add(daySpinner);
 
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
@@ -47,9 +47,9 @@ public class TimeOfCarsPanel extends JPanel{
         });
 
         timer.start();
-        timeOfCarsPanel.add(dateTimeLabel);
-        timeOfCarsPanel.add(currentTime);
-        timeOfCarsPanel.add(selectButton);
+        panelOfTime.add(dateTimeLabel);
+        panelOfTime.add(currentTime);
+        panelOfTime.add(selectButton);
         currentTime.addActionListener(e -> {
             timer.restart();
             LocalDateTime currentDateTime = LocalDateTime.now();
@@ -76,14 +76,14 @@ public class TimeOfCarsPanel extends JPanel{
     }
 
     static class CustomCheckBox extends JCheckBox {
-        private PlacesOfCarsPanel.CustomObject customObject;
+        private PanelOfPlace.CustomObject customObject;
 
-        public CustomCheckBox(PlacesOfCarsPanel.CustomObject customObject) {
+        public CustomCheckBox(PanelOfPlace.CustomObject customObject) {
             super(customObject.toString());
             this.customObject = customObject;
         }
 
-        public PlacesOfCarsPanel.CustomObject getCustomObject() {
+        public PanelOfPlace.CustomObject getCustomObject() {
             return customObject;
         }
     }
