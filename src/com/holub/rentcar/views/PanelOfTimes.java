@@ -34,8 +34,6 @@ public class PanelOfTimes extends MainFrameComponentView {
         panelOfTime.add(dateTimeLabel,BorderLayout.SOUTH);
         panelOfTime.add(currentTime, BorderLayout.SOUTH);
         panelOfTime.add(selectButton, BorderLayout.SOUTH);
-
-        updateSpinners();
     }
 
     @Override

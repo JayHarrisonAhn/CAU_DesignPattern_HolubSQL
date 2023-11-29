@@ -1,19 +1,15 @@
 package com.holub.rentcar;
 
-import com.holub.rentcar.views.MainFrameComponentView;
 import com.holub.rentcar.views.MainFrameView;
-import com.holub.rentcar.views.MenuView;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class MainFrameController extends JFrame implements ActionListener {
+public class MainFrameController extends JFrame implements ActionListener, ChangeListener {
     MainFrameModel model = new MainFrameModel();
     MainFrameView view;
     MainFrameController() {
@@ -22,9 +18,6 @@ public class MainFrameController extends JFrame implements ActionListener {
         this.view.menuSelectionView.locationBtn.addActionListener(this);
         this.view.menuSelectionView.timeBtn.addActionListener(this);
         this.view.menuSelectionView.resultBtn.addActionListener(this);
-        this.view.menuView.panelOfTime.yearSpinner.addChangeListener(e->setTime());
-        this.view.menuView.panelOfTime.monthSpinner.addChangeListener(e->setTime());
-        this.view.menuView.panelOfTime.daySpinner.addChangeListener(e->setTime());
         model.addObserver(this.view);
 
         setSize(500, 500);
@@ -32,6 +25,7 @@ public class MainFrameController extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         add(view, BorderLayout.CENTER);
+        setTime();
         setVisible(true);
     }
 
@@ -51,6 +45,10 @@ public class MainFrameController extends JFrame implements ActionListener {
         }
     }
 
+    public void stateChanged(ChangeEvent e) {
+        setTime();
+    }
+
     public void setCarInfoCheckbox(int i, boolean checked) {
         model.checkInfo(i, checked);
     }
@@ -61,7 +59,13 @@ public class MainFrameController extends JFrame implements ActionListener {
         int year = (int) this.view.menuView.panelOfTime.yearSpinner.getValue();
         int month = (int) this.view.menuView.panelOfTime.monthSpinner.getValue();
         int day = (int) this.view.menuView.panelOfTime.daySpinner.getValue();
+        this.view.menuView.panelOfTime.yearSpinner.removeChangeListener(this);
+        this.view.menuView.panelOfTime.monthSpinner.removeChangeListener(this);
+        this.view.menuView.panelOfTime.daySpinner.removeChangeListener(this);
         model.changeTime(year, month, day);
+        this.view.menuView.panelOfTime.yearSpinner.addChangeListener(this);
+        this.view.menuView.panelOfTime.monthSpinner.addChangeListener(this);
+        this.view.menuView.panelOfTime.daySpinner.addChangeListener(this);
     }
 
     public static void main(String[] args) {
