@@ -1,3 +1,5 @@
+package com.holub.test;
+
 import com.holub.database.Table;
 import com.holub.database.TableFactory;
 import com.holub.database.XMLExporter;

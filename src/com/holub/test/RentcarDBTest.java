@@ -8,28 +8,27 @@ import java.util.logging.Handler;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class OrderByHandlerTest {
-    TableHandler orderByHandler;
+class RentcarDBTest {
+    TableHandler distinctHandler;
     Table table;
     @BeforeEach
     void setUp() {
-        orderByHandler = new OrderByHandler("score", "asc");
+        distinctHandler = new DistinctHandler();
         table = new ConcreteTable("table", new String[]{ "name", "grade", "id", "score"});
         table.insert(new String[]{"bang", "4", "15411541", "90"});
         table.insert(new String[]{"ahn", "4", "12345678", "60"});
         table.insert(new String[]{"jeong", "4", "43215678", "70"});
-        table.insert(new String[]{"kwon", "4", "35423452", "80"});
+        table.insert(new String[]{"bang", "4", "15411541", "90"});
     }
     @Test
     void test() {
         try {
             Table expectedTable = new ConcreteTable("table", new String[]{ "name", "grade", "id", "score"});
+            expectedTable.insert(new String[]{"bang", "4", "15411541", "90"});
             expectedTable.insert(new String[]{"ahn", "4", "12345678", "60"});
             expectedTable.insert(new String[]{"jeong", "4", "43215678", "70"});
-            expectedTable.insert(new String[]{"kwon", "4", "35423452", "80"});
-            expectedTable.insert(new String[]{"bang", "4", "15411541", "90"});
 
-            Table targetTable = orderByHandler.handleRequest(table);
+            Table targetTable = distinctHandler.handleRequest(table);
 
             Cursor origin = expectedTable.rows();
             Cursor target = targetTable.rows();
@@ -46,10 +45,10 @@ class OrderByHandlerTest {
             }
 
             if(target.advance() || origin.advance()){
-                fail("order-by keyword doesn't work correctly.");
+                fail("distinct keyword doesn't work correctly.");
             }
         } catch (Exception e) {
-            System.out.println("order-by keyword doesn't work correctly.");
+            System.out.println("distinct keyword doesn't work correctly.");
         }
     }
 }
