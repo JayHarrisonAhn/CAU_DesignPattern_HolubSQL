@@ -39,6 +39,9 @@ public class RentcarDB {
         this.car.insert(new Object[] { "134허3833", "avante", "sangdo" });
         this.car.insert(new Object[] { "134허3834", "avante", "sangdo" });
         this.car.insert(new Object[] { "134허3835", "avante", "sadang" });
+        this.car.insert(new Object[] { "134허3836", "avante", "sangdo" });
+        this.car.insert(new Object[] { "134허3837", "grandeur", "sangdo" });
+        this.car.insert(new Object[] { "134허3838", "grandeur", "seoulip" });
 
         this.reservation = TableFactory.create("reservation", new String[] { "carId", "date", "userId" });
         this.reservation.insert(new Object[] { "134허3835", "20231101", "gd" });

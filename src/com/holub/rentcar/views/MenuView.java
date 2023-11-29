@@ -14,7 +14,7 @@ public class MenuView extends MainFrameComponentView {
     public PanelOfCars panelOfCar = new PanelOfCars(model, controller);
     public PanelOfPlaces panelOfPlace = new PanelOfPlaces(model, controller);
     public PanelOfTimes panelOfTime = new PanelOfTimes(model, controller);
-    public PanelOfResults panelOfResult = new PanelOfResults();
+    public PanelOfResults panelOfResult = new PanelOfResults(model, controller);
     MenuView(MainFrameModel model, MainFrameController controller) {
         super(model, controller);
         setLayout(new CardLayout());

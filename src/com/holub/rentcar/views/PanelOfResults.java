@@ -1,35 +1,41 @@
 package com.holub.rentcar.views;
 
+import com.holub.rentcar.MainFrameController;
+import com.holub.rentcar.MainFrameModel;
+import com.holub.rentcar.models.row.Car;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Observable;
 
-public class PanelOfResults extends JPanel {
+public class PanelOfResults extends MainFrameComponentView {
     public JPanel panelOfResult = new JPanel();
-    public JPanel chungangMainGate = new JPanel();
-    public JPanel chungangBackGate = new JPanel();
-    public JPanel chungangHospital = new JPanel();
-    public JPanel sungsil = new JPanel();
-    public JPanel seoulNational = new JPanel();
     public JTable resultOfTable = new JTable();
 
-    PanelOfResults() {
-        chungangMainGate.setSize(80,400);
-        chungangBackGate.setSize(80,400);
-        chungangHospital.setSize(80,400);
-        sungsil.setSize(80,400);
-        seoulNational.setSize(80,400);
-
-        Object[][] placeData = {
-                {"Car 1", "중앙대 정문"},
-                {"Car 2", "중앙대 후문"},
-                {"Car 3", "중앙대 병원"},
-                {"Car 4", "숭실대"},
-                {"Car 5", "서울대 입구"},
-        };
-        Object[] columnNames = {"Car's Info", "Car's Place"};
-        DefaultTableModel model = new DefaultTableModel(placeData, columnNames);
-        resultOfTable.setModel(model);
+    PanelOfResults(MainFrameModel model, MainFrameController controller) {
+        super(model, controller);
         panelOfResult.add(resultOfTable);
 //        placeTable.setPreferredScrollableViewportSize(new Dimension(100, 300));
+    }
+
+    public void update(Observable o, Object arg) {
+        updateResults();
+    }
+
+    private void updateResults() {
+        List<Object[]> results = new ArrayList<>();
+        for (Car car : model.results) {
+            results.add(car.toArray());
+        }
+        Object[] columnNames = new String[] {"차량번호", "차종", "대여장소"};
+        Object[][] placeData = model.results.stream()
+                .map(l -> l.toArray())
+                .toArray(Object[][]::new);
+        DefaultTableModel tableModel = new DefaultTableModel(placeData, columnNames);
+        resultOfTable.setModel(tableModel);
+        resultOfTable.repaint();
     }
 }

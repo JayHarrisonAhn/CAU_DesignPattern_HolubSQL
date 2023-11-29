@@ -37,6 +37,7 @@ public class MainFrameController extends JFrame implements ActionListener, Chang
         } else if (e.getSource().equals(view.menuSelectionView.timeBtn)) {
             model.changeMenu("time");
         } else if (e.getSource().equals(view.menuSelectionView.resultBtn)) {
+            model.searchResults();
             model.changeMenu("result");
         } else if (e.getSource().equals(view.selectBtn)){
 
