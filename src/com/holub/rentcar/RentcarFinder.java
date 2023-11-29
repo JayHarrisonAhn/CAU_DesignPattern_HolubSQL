@@ -6,11 +6,25 @@ import java.util.*;
 import java.util.logging.Handler;
 
 public class RentcarFinder {
-    private Table result = RentcarDB.orm.car.select(new Selector.Adapter() {
-        public boolean approve(Cursor[] tables) {
-            return true;
-        }
-    });
+    private Table result;
+
+    public RentcarFinder() {
+        List columns = new ArrayList();
+        columns.add("carId");
+        columns.add("carTypeId");
+        columns.add("name");
+        columns.add("spotId");
+
+        List tables = new ArrayList();
+        tables.add(RentcarDB.orm.carTypes);
+
+        this.result =
+                RentcarDB.orm.car.select(new Selector.Adapter() {
+                    public boolean approve(Cursor[] tables) {
+                        return tables[0].column("carType").equals(tables[1].column("carTypeId"));
+                    }
+                }, columns, tables);
+    }
 
     public RentcarFinder date(String date) {
         Table unavailableCarTable = RentcarDB.orm.reservation.select(new Selector.Adapter() {
@@ -37,6 +51,19 @@ public class RentcarFinder {
             }
         });
         return this;
+    }
+
+    public RentcarFinder types(Set<String> types) {
+        this.result = result.select(new Selector.Adapter() {
+            public boolean approve(Cursor[] tables) {
+                return types.contains(tables[0].column("carTypeId"));
+            }
+        });
+        return this;
+    }
+
+    public Table getResult() {
+        return this.result;
     }
 
     @Override

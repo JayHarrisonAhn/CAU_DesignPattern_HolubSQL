@@ -1,6 +1,8 @@
 package com.holub.rentcar;
 
+import com.holub.rentcar.models.CarsFactory;
 import com.holub.rentcar.models.PlacesFactory;
+import com.holub.rentcar.models.row.Car;
 import com.holub.rentcar.models.row.CarType;
 import com.holub.rentcar.models.CarTypesFactory;
 import com.holub.rentcar.models.Selection;
@@ -11,12 +13,15 @@ import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Observable;
+import java.util.Set;
 
 public class MainFrameModel extends Observable {
     public String currentMenu = "test";
     public ArrayList<Selection<CarType>> infos = new ArrayList<>();
     public ArrayList<Selection<Place>> places = new ArrayList<>();
+    public ArrayList<Car> results = new ArrayList<>();
     public int year;
     public int month;
     public int day;
@@ -38,6 +43,27 @@ public class MainFrameModel extends Observable {
         this.year = currentDate.getYear();
         this.month = currentDate.getMonthValue();
         this.day = currentDate.getDayOfMonth();
+    }
+
+    public void searchResults() {
+        RentcarFinder resultFinder = new RentcarFinder();
+
+        Set<String> infoSet = new HashSet<>();
+        for (Selection<CarType> infoSelection : infos) {
+            if (infoSelection.selected) {
+                infoSet.add(infoSelection.obj.id);
+            }
+        }
+        if(!infoSet.isEmpty()) {
+            resultFinder = resultFinder.types(infoSet);
+        }
+
+        CarsFactory carsFactory = new CarsFactory();
+        this.results = carsFactory.createFrom(resultFinder.getResult());
+        setChanged();
+        notifyObservers();
+
+        System.out.println(resultFinder.getResult().toString());
     }
 
     public void changeMenu(String menuId) {
