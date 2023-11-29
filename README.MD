@@ -1,7 +1,18 @@
 # Car Rental Service
 ___
 ## Intro
-개선한 Holub SQL을 이용한 자동차 렌탈 서비스입니다.
+개선한 Holub SQL을 이용한 자동차 렌탈 서비스입니다.  
+  
+사용자가 선택한 정보를 기반으로 DB에서 이용 가능한 리스트를 Holub SQL 기능을 활용하여 얻어냅니다.
+
+이후, 사용자가 선택한 차량의 대여 정보가 DB에 Update됩니다.
+___
+## Application Use Case Diagrams
+<p><img src="assets/UseCaseDiagram.png" width="546" height="516" alt="importer"></p>
+
+## Application Use Case
+<p><img src="assets/UseCase.png" width="457" height="318" alt="importer"></p>
+
 ___
 ## Holub SQL Origin Function
 - Minimum SQL Function
@@ -9,7 +20,6 @@ ___
   - CSV Importer
   - CSV Exporter
   - JTable Exporter
-___
 ## Holub SQL Extended Function
 - Importer, Exporter
   - HTML Exporter
@@ -31,8 +41,15 @@ ___
 - Chain Of Responsibility Pattern
 <p><img src="./assets/TableHandler.png" width="492" height="242" alt="handler"></p>
 
+### Application
+- MVC Pattern
+<p><img src="./assets/MVC.png" width="586" height="471" alt="handler"></p>
+
+- Factory Method Pattern
+<p><img src="./assets/FactoryMethod.png" width="473" height="272" alt="handler"></p>
+
 ___
 ## Environment
-- JDK 1.8
+- JDK 21
 - JUnit 5
 
