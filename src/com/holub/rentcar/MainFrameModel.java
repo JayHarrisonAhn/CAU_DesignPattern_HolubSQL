@@ -98,6 +98,11 @@ public class MainFrameModel extends Observable {
         notifyObservers();
     }
 
+    public void reservationCar(int rowNum) {
+        Car car = results.get(rowNum);
+        System.out.println("Book "+car.id);
+    }
+
     public void setInfos(ArrayList<Selection<CarType>> infos) {
         this.infos = infos;
         setChanged();

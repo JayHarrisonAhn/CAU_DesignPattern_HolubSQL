@@ -14,10 +14,12 @@ import java.util.Observable;
 public class PanelOfResults extends MainFrameComponentView {
     public JPanel panelOfResult = new JPanel();
     public JTable resultOfTable = new JTable();
+    public JButton bookButton = new JButton("예약하기");
 
     PanelOfResults(MainFrameModel model, MainFrameController controller) {
         super(model, controller);
         panelOfResult.add(resultOfTable);
+        panelOfResult.add(bookButton);
 //        placeTable.setPreferredScrollableViewportSize(new Dimension(100, 300));
     }
 

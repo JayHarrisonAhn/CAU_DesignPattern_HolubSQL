@@ -19,6 +19,7 @@ public class MainFrameController extends JFrame implements ActionListener, Chang
         this.view.menuSelectionView.locationBtn.addActionListener(this);
         this.view.menuSelectionView.timeBtn.addActionListener(this);
         this.view.menuSelectionView.resultBtn.addActionListener(this);
+        this.view.menuView.panelOfResult.bookButton.addActionListener(this);
         model.addObserver(this.view);
 
         setSize(500, 500);
@@ -42,8 +43,8 @@ public class MainFrameController extends JFrame implements ActionListener, Chang
         } else if (e.getSource().equals(view.menuSelectionView.resultBtn)) {
             model.searchResults();
             model.changeMenu("result");
-        } else if (e.getSource().equals(view.selectBtn)){
-
+        } else if (e.getSource().equals(view.menuView.panelOfResult.bookButton)){
+            model.reservationCar(view.menuView.panelOfResult.resultOfTable.getSelectedRow());
         } else if (e.getSource().equals(view.currentTime)){
 
         }

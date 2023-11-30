@@ -1,9 +1,9 @@
 package com.holub.rentcar.models.row;
 
 public class Car extends Row {
-    CarType type;
-    String id;
-    String place;
+    public CarType type;
+    public String id;
+    public String place;
     public Car(String id, String type, String name, String place) {
         this.id = id;
         this.place = place;
