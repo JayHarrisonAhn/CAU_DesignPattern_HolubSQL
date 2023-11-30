@@ -1,17 +1,21 @@
 package com.holub.rentcar.models.db.file;
 
 import com.holub.database.*;
+import com.holub.rentcar.models.db.file.iemodule.IEModule;
 
 import java.io.*;
 
-public abstract class RentcarDBFileInitializer extends RentcarDBInitializer {
+public class RentcarDBFileInitializer extends RentcarDBInitializer {
 
-    abstract Table.Importer importer(Reader in);
-    abstract Table.Exporter exporter(Writer out);
+    IEModule ieModule;
+
+    public RentcarDBFileInitializer(IEModule ieModule) {
+        this.ieModule = ieModule;
+    }
 
     private Table importTable(String fileName) throws IOException {
         Reader in = new FileReader(fileName);
-        Table spot = new ConcreteTable(importer(in));
+        Table spot = new ConcreteTable(ieModule.importer(in));
         in.close();
         return spot;
     }
@@ -73,7 +77,7 @@ public abstract class RentcarDBFileInitializer extends RentcarDBInitializer {
     private void write(Table table, String fileName) {
         try {
             Writer out = new FileWriter(fileName);
-            table.export(exporter(out));
+            table.export(ieModule.exporter(out));
             out.close();
         } catch (IOException e) {
             System.out.println(e);

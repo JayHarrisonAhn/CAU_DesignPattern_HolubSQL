@@ -1,4 +1,4 @@
-package com.holub.rentcar.models.db.file;
+package com.holub.rentcar.models.db.file.iemodule;
 
 import com.holub.database.Table;
 import com.holub.database.XMLExporter;
@@ -7,14 +7,14 @@ import com.holub.database.XMLImporter;
 import java.io.Reader;
 import java.io.Writer;
 
-public class RentcarDBXMLInitializer extends RentcarDBFileInitializer {
+public class XMLIEModule extends IEModule {
     @Override
-    Table.Importer importer(Reader in) {
+    public Table.Importer importer(Reader in) {
         return new XMLImporter(in);
     }
 
     @Override
-    Table.Exporter exporter(Writer out) {
+    public Table.Exporter exporter(Writer out) {
         return new XMLExporter(out);
     }
 }
