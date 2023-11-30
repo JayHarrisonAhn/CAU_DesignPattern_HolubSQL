@@ -8,7 +8,7 @@ public abstract class RentcarDBInitializer {
         return TableFactory.create("spot", new String[] { "spotId", "spotName", "address" });
     };
     public Table carTypes() {
-        return TableFactory.create("carTypes", new String[] { "carTypeId", "name" });
+        return TableFactory.create("carTypes", new String[] { "carTypeId", "carTypeName" });
     };
     public Table car() {
         return TableFactory.create("car", new String[] { "carId", "carType", "spotId" });

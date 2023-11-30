@@ -1,11 +1,13 @@
 package com.holub.rentcar;
 
 import com.holub.database.Cursor;
+import com.holub.database.OrderByHandler;
 import com.holub.database.Selector;
 import com.holub.database.Table;
 import com.holub.rentcar.models.*;
 import com.holub.rentcar.models.db.RentcarDB;
 import com.holub.rentcar.models.db.RentcarFinder;
+import com.holub.rentcar.models.db.ReservationFinder;
 import com.holub.rentcar.models.row.*;
 
 import java.time.LocalDate;
@@ -22,6 +24,7 @@ public class MainFrameModel extends Observable {
     public ArrayList<Selection<CarType>> infos = new ArrayList<>();
     public ArrayList<Selection<Place>> places = new ArrayList<>();
     public ArrayList<Car> results = new ArrayList<>();
+    public Table reservations;
     public int year;
     public int month;
     public int day;
@@ -75,6 +78,9 @@ public class MainFrameModel extends Observable {
     }
 
     public void changeMenu(String menuId) {
+        if (menuId.equals("reservations")) {
+            updateReservations();
+        }
         this.currentMenu = menuId;
         setChanged();
         notifyObservers();
@@ -99,8 +105,17 @@ public class MainFrameModel extends Observable {
     }
 
     public void reservationCar(int rowNum) {
+        if (rowNum<0 || rowNum >= results.size())
+            return;
         Car car = results.get(rowNum);
-        System.out.println("Book "+car.id);
+        RentcarDB.orm.reservation.insert(new Object[] { car.id, year+""+month+""+day, userId });
+        changeMenu("reservations");
+    }
+
+    private void updateReservations() {
+        this.reservations = new ReservationFinder(userId)
+                .orderByDateDesc()
+                .getResult();
     }
 
     public void setInfos(ArrayList<Selection<CarType>> infos) {

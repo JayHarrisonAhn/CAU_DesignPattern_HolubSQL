@@ -11,7 +11,7 @@ public class RentcarFinder {
         List columns = new ArrayList();
         columns.add("carId");
         columns.add("carTypeId");
-        columns.add("name");
+        columns.add("carTypeName");
         columns.add("spotId");
 
         List tables = new ArrayList();

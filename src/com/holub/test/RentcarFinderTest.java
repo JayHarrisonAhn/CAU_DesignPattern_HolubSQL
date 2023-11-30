@@ -16,7 +16,7 @@ class RentcarFinderTest {
         RentcarDB.orm.spot = TableFactory.create("spot", new String[] { "spotId", "spotName", "address" });
         RentcarDB.orm.spot.insert(new Object[] { "gangnam", "강남", "" });
 
-        RentcarDB.orm.carTypes = TableFactory.create("carTypes", new String[] { "carTypeId", "name" });
+        RentcarDB.orm.carTypes = TableFactory.create("carTypes", new String[] { "carTypeId", "carTypeName" });
         RentcarDB.orm.carTypes.insert(new Object[]{"pony", "포니"});
         RentcarDB.orm.carTypes.insert(new Object[]{"ferrari", "페라리"});
 

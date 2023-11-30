@@ -16,6 +16,7 @@ public class MenuView extends MainFrameComponentView {
     public PanelOfPlaces panelOfPlace = new PanelOfPlaces(model, controller);
     public PanelOfTimes panelOfTime = new PanelOfTimes(model, controller);
     public PanelOfResults panelOfResult = new PanelOfResults(model, controller);
+    public PanelOfReservations panelOfReservations = new PanelOfReservations(model, controller);
     MenuView(MainFrameModel model, MainFrameController controller) {
         super(model, controller);
         setLayout(new CardLayout());
@@ -24,6 +25,7 @@ public class MenuView extends MainFrameComponentView {
         add(new JScrollPane(panelOfPlace.panelOfPlace), "location");
         add(new JScrollPane(panelOfTime.panelOfTime), "time");
         add(new JScrollPane(panelOfResult.panelOfResult), "result");
+        add(new JScrollPane(panelOfReservations), "reservations");
     }
 
     public void update(Observable o, Object arg) {
