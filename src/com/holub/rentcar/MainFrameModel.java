@@ -48,6 +48,10 @@ public class MainFrameModel extends Observable {
         this.day = currentDate.getDayOfMonth();
     }
 
+    private String dateString() {
+        return String.format("%04d", year)+String.format("%02d", month)+String.format("%02d", day);
+    }
+
     public void searchResults() {
         RentcarFinder resultFinder = new RentcarFinder();
 
@@ -70,6 +74,8 @@ public class MainFrameModel extends Observable {
         if(!placeSet.isEmpty()) {
             resultFinder = resultFinder.spots(placeSet);
         }
+
+        resultFinder = resultFinder.date(dateString());
 
         CarsFactory carsFactory = new CarsFactory();
         this.results = carsFactory.createFrom(resultFinder.getResult());
@@ -111,7 +117,7 @@ public class MainFrameModel extends Observable {
         RentcarDB.orm.reservation.insert(
                 new Object[] {
                         car.id,
-                        String.format("%04d", year)+String.format("%02d", month)+String.format("%02d", day),
+                        dateString(),
                         userId
                 });
         RentcarDB.orm.save();
