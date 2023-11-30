@@ -11,6 +11,7 @@ import java.awt.*;
 import java.util.Observable;
 
 public class MenuView extends MainFrameComponentView {
+    public PanelOfLogin login = new PanelOfLogin(model, controller);
     public PanelOfCars panelOfCar = new PanelOfCars(model, controller);
     public PanelOfPlaces panelOfPlace = new PanelOfPlaces(model, controller);
     public PanelOfTimes panelOfTime = new PanelOfTimes(model, controller);
@@ -18,6 +19,7 @@ public class MenuView extends MainFrameComponentView {
     MenuView(MainFrameModel model, MainFrameController controller) {
         super(model, controller);
         setLayout(new CardLayout());
+        add(new JScrollPane(login), "login");
         add(new JScrollPane(panelOfCar.panelOfCar), "info");
         add(new JScrollPane(panelOfPlace.panelOfPlace), "location");
         add(new JScrollPane(panelOfTime.panelOfTime), "time");

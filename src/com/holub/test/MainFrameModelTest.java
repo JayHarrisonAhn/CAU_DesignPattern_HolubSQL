@@ -1,15 +1,12 @@
 package com.holub.test;
 
-import com.holub.database.*;
 import com.holub.rentcar.MainFrameModel;
-import com.holub.rentcar.RentcarFinder;
 import com.holub.rentcar.models.row.*;
 import com.holub.rentcar.models.Selection;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.logging.Handler;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 

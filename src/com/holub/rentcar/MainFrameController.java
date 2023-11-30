@@ -14,6 +14,7 @@ public class MainFrameController extends JFrame implements ActionListener, Chang
     MainFrameView view;
     MainFrameController() {
         this.view = new MainFrameView(model, this);
+        this.view.menuSelectionView.loginBtn.addActionListener(this);
         this.view.menuSelectionView.infoBtn.addActionListener(this);
         this.view.menuSelectionView.locationBtn.addActionListener(this);
         this.view.menuSelectionView.timeBtn.addActionListener(this);
@@ -30,7 +31,10 @@ public class MainFrameController extends JFrame implements ActionListener, Chang
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(view.menuSelectionView.infoBtn)) {
+        model.setUserId(this.view.menuView.login.textField.getText());
+        if (e.getSource().equals(view.menuSelectionView.loginBtn)) {
+            model.changeMenu("login");
+        } else if (e.getSource().equals(view.menuSelectionView.infoBtn)) {
             model.changeMenu("info");
         } else if (e.getSource().equals(view.menuSelectionView.locationBtn)) {
             model.changeMenu("location");
