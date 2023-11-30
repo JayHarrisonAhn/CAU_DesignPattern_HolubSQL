@@ -8,7 +8,20 @@ ___
 이후, 사용자가 선택한 차량의 대여 정보가 DB에 Update됩니다.
 ___
 ## Application
-<p><img src="assets/Application_demo.gif" width="480" height="480" alt="importer"></p>
+- Login Screen
+<p><img src="assets/LoginScreen.png" width="455" height="297" alt="importer"></p>
+
+- Car Info Screen
+<p><img src="assets/CarInfoScreen.png" width="449" height="276" alt="importer"></p>
+
+- Car Location Screen
+<p><img src="assets/CarLocationScreen.png" width="433" height="287" alt="importer"></p>
+
+- Car Rental Time Screen
+<p><img src="assets/CarRentalTimeScreen.png" width="437" height="285" alt="importer"></p>
+
+- Result Screen
+<p><img src="assets/ResultScreen.png" width="447" height="290" alt="importer"></p>
 
 ___
 ## Application Use Case Diagrams
@@ -50,10 +63,13 @@ ___
 <p><img src="./assets/MVC.png" width="586" height="471" alt="handler"></p>
 
 - Factory Method Pattern
-<p><img src="./assets/FactoryMethod.png" width="410" height="375" alt="handler"></p>
+<p><img src="./assets/FactoryMethod.png" width="409" height="410" alt="handler"></p>
 
 - Facade Pattern
 <p><img src="./assets/Facade.png" width="426" height="437" alt="handler"></p>
+
+- Strategy Pattern
+<p><img src="./assets/Strategy.png" width="378" height="285" alt="handler"></p>
 
 ___
 ## Environment
