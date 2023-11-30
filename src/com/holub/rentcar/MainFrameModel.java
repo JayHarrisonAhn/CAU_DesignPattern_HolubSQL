@@ -108,7 +108,13 @@ public class MainFrameModel extends Observable {
         if (rowNum<0 || rowNum >= results.size())
             return;
         Car car = results.get(rowNum);
-        RentcarDB.orm.reservation.insert(new Object[] { car.id, year+""+month+""+day, userId });
+        RentcarDB.orm.reservation.insert(
+                new Object[] {
+                        car.id,
+                        String.format("%04d", year)+String.format("%02d", month)+String.format("%02d", day),
+                        userId
+                });
+        RentcarDB.orm.save();
         changeMenu("reservations");
     }
 

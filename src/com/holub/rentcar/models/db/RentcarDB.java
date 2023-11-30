@@ -1,8 +1,10 @@
 package com.holub.rentcar.models.db;
 
 import com.holub.database.*;
+import com.holub.rentcar.models.db.file.RentcarDBFileInitializer;
 import com.holub.rentcar.models.db.file.RentcarDBInitializer;
 import com.holub.rentcar.models.db.file.RentcarDBTestInitializer;
+import com.holub.rentcar.models.db.file.RentcarDBXMLInitializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,8 @@ public class RentcarDB {
     }
     public static RentcarDB orm = new RentcarDB();
 
-    private final RentcarDBInitializer initializer = new RentcarDBTestInitializer();
+//    private final RentcarDBInitializer initializer = new RentcarDBTestInitializer();
+    private final RentcarDBInitializer initializer = new RentcarDBXMLInitializer();
 
     public Table spot = initializer.spot();
     public Table carTypes = initializer.carTypes();

@@ -4,17 +4,14 @@ import com.holub.database.*;
 
 import java.io.*;
 
-public class RentcarDBFileInitializer extends RentcarDBInitializer {
-    Table.Importer importer;
-    Table.Exporter exporter;
-    public RentcarDBFileInitializer(Table.Importer importer, Table.Exporter exporter) {
-        this.importer = importer;
-        this.exporter = exporter;
-    }
+public abstract class RentcarDBFileInitializer extends RentcarDBInitializer {
+
+    abstract Table.Importer importer(Reader in);
+    abstract Table.Exporter exporter(Writer out);
 
     private Table importTable(String fileName) throws IOException {
         Reader in = new FileReader(fileName);
-        Table spot = new ConcreteTable(new CSVImporter(in));
+        Table spot = new ConcreteTable(importer(in));
         in.close();
         return spot;
     }
@@ -22,7 +19,7 @@ public class RentcarDBFileInitializer extends RentcarDBInitializer {
     @Override
     public Table spot() {
         try {
-            return importTable("spot");
+            return importTable("rentcar_spot");
         } catch (IOException e) {
             return super.spot();
         }
@@ -31,63 +28,55 @@ public class RentcarDBFileInitializer extends RentcarDBInitializer {
     @Override
     public Table carTypes() {
         try {
-            return importTable("carTypes");
+            return importTable("rentcar_carTypes");
         } catch (IOException e) {
-            return super.spot();
+            return super.carTypes();
         }
     }
 
     @Override
     public Table car() {
         try {
-            return importTable("car");
+            return importTable("rentcar_car");
         } catch (IOException e) {
-            return super.spot();
+            return super.car();
         }
     }
 
     @Override
     public Table reservation() {
         try {
-            return importTable("reservation");
+            return importTable("rentcar_reservation");
         } catch (IOException e) {
-            return super.spot();
+            return super.reservation();
         }
     }
 
     @Override
     public Table user() {
         try {
-            return importTable("user");
+            return importTable("rentcar_user");
         } catch (IOException e) {
-            return super.spot();
+            return super.user();
         }
     }
 
     @Override
     public void save(Table spot, Table carTypes, Table car, Table reservation, Table user) {
+        write(spot, "rentcar_spot");
+        write(carTypes, "rentcar_carTypes");
+        write(car, "rentcar_car");
+        write(reservation, "rentcar_reservation");
+        write(user, "rentcar_user");
+    }
+
+    private void write(Table table, String fileName) {
         try {
-            Writer out;
-
-            out = new FileWriter("spot");
-            spot.export(new CSVExporter(out));
+            Writer out = new FileWriter(fileName);
+            table.export(exporter(out));
             out.close();
-
-            out = new FileWriter("carTypes");
-            carTypes.export(new CSVExporter(out));
-            out.close();
-
-            out = new FileWriter("car");
-            car.export(new CSVExporter(out));
-            out.close();
-
-            out = new FileWriter("reservation");
-            reservation.export(new CSVExporter(out));
-            out.close();
-
-            out = new FileWriter("user");
-            user.export(new CSVExporter(out));
-            out.close();
-        } catch (IOException e) { }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 }
