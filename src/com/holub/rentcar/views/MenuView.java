@@ -2,10 +2,7 @@ package com.holub.rentcar.views;
 
 import com.holub.rentcar.MainFrameController;
 import com.holub.rentcar.MainFrameModel;
-import com.holub.rentcar.PanelOfPlace;
-import com.holub.rentcar.PanelOfTime;
 
-import javax.print.attribute.standard.JobMediaSheetsCompleted;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;

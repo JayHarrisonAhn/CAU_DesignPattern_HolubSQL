@@ -42,7 +42,7 @@ public class MenuSelectionView extends MainFrameComponentView {
             toolBox.add(b4);
             toolBox.add(b5);
         }
-        buttonBox.add(Box.createVerticalStrut(200)); // adjust height of buttonBox
+        buttonBox.add(Box.createVerticalStrut(100)); // adjust height of buttonBox
         buttonBox.add(toolBox);
 
         add(buttonBox, BorderLayout.WEST);

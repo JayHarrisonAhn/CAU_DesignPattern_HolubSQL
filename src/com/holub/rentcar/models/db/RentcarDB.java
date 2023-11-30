@@ -27,16 +27,4 @@ public class RentcarDB {
         initializer.save(spot, carTypes, car, reservation, user);
     }
 
-    public static void main(String[] args) {
-        // Test Code
-        List tables = new ArrayList();
-        tables.add(RentcarDB.orm.reservation);
-
-        Table selectResult = RentcarDB.orm.car.select(new Selector.Adapter() {
-            public boolean approve(Cursor[] tables) {
-                return tables[0].column("carId").equals("134허3833");
-            }
-        }, tables);
-        System.out.println(selectResult.toString());
-    }
 }

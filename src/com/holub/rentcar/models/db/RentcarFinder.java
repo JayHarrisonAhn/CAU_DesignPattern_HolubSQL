@@ -78,12 +78,4 @@ public class RentcarFinder {
     public String toString() {
         return this.result.toString();
     }
-
-    public static void main(String[] args) {
-        RentcarFinder finder = new RentcarFinder()
-                .date("20231101")
-                .spot("sadang")
-                ;
-        System.out.println(finder.toString());
-    }
 }
