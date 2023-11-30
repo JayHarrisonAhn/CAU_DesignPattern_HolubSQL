@@ -28,3 +28,26 @@ Released 27 Sept., 2004
  *    caused by bugs, including lost productivity or data)
  *    in any of this code.
  */
+
+This project is a car rental service utilizing enhanced Holub SQL.
+
+Github Repository: https://github.com/JayHarrisonAhn/CAU_DesignPattern_HolubSQL
+
+List
+- 모든 소스코드 화일, 실행 화일 (Java의 경우 class 화일), JUnit 테스트 코드, 데이터
+  - Application Code
+  - Extended Holub SQL Code
+    - XML Exporter, Importer
+    - HTML Exporter
+    - Holub SQL Console Error Solved
+    - OrderBy, GroupBy, Distinct Keyword
+  - JUnit Test Code of Project
+- Architecture (png File In project assets folder)
+    - UseCase Diagram, Specification
+    - Applied Design Pattern
+- Project Documentation
+- Video Clip
+
+Version
+- JDK 21
+- JUNIT 5
