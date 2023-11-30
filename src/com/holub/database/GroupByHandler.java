@@ -55,16 +55,18 @@ public class GroupByHandler extends TableHandler{
 
             switch (aggregateColumn.get(aggregateKey).toString()) {
                 case "sum":
-                    if(sum.containsKey(key)) sum.put(key, sum.get(key) + Double.parseDouble(current.column(aggregateKey).toString()));
-                    else sum.put(key, Double.parseDouble(current.column(aggregateKey).toString()));
+                    try {
+                        if(sum.containsKey(key)) sum.put(key, sum.get(key) + Double.parseDouble(current.column(aggregateKey).toString()));
+                        else sum.put(key, Double.parseDouble(current.column(aggregateKey).toString()));
+                    } catch (NumberFormatException e) {
+                        throw new IllegalArgumentException("숫자 형식이 아닌 문자열이 포함되어 있습니다.");
+                    }
                     break;
                 case "count":
                     if(count.containsKey(key)) count.put(key, count.get(key) + 1);
                     else count.put(key, 1);
                     break;
             }
-
-
         }
     }
 
