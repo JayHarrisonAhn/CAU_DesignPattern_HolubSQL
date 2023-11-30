@@ -1,9 +1,8 @@
-package com.holub.rentcar;
+package com.holub.rentcar.models.db;
 
 import com.holub.database.*;
 
 import java.util.*;
-import java.util.logging.Handler;
 
 public class RentcarFinder {
     private Table result;
@@ -81,8 +80,6 @@ public class RentcarFinder {
     }
 
     public static void main(String[] args) {
-        RentcarDB.orm.createScheme();
-
         RentcarFinder finder = new RentcarFinder()
                 .date("20231101")
                 .spot("sadang")

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.util.Observable;
 
 public class MenuSelectionView extends MainFrameComponentView {
+    public JButton loginBtn = new JButton("로그인");
     public JButton infoBtn = new JButton("차량정보");
     public JButton locationBtn = new JButton("위치");
     public JButton timeBtn = new JButton("대여시간");
@@ -15,6 +16,10 @@ public class MenuSelectionView extends MainFrameComponentView {
     MenuSelectionView(MainFrameModel model, MainFrameController controller) {
         super(model, controller);
 
+        Box loginbox = Box.createHorizontalBox();
+        loginbox.add(Box.createHorizontalGlue());
+        loginbox.add(loginBtn);
+        loginbox.add(Box.createHorizontalGlue());
         Box b1 = Box.createHorizontalBox();
         b1.add(Box.createHorizontalGlue());
         b1.add(infoBtn);
@@ -34,6 +39,7 @@ public class MenuSelectionView extends MainFrameComponentView {
 
         Box toolBox = new Box(BoxLayout.Y_AXIS);
         Box buttonBox = new Box(BoxLayout.Y_AXIS);
+        toolBox.add(loginbox);
         toolBox.add(b1);
         toolBox.add(b2);
         toolBox.add(b3);

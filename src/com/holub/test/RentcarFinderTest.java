@@ -2,13 +2,11 @@ package com.holub.test;
 
 import com.holub.database.Table;
 import com.holub.database.TableFactory;
-import com.holub.rentcar.RentcarFinder;
+import com.holub.rentcar.models.db.RentcarFinder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.holub.rentcar.RentcarDB;
-import java.util.Set;
-import java.util.HashSet;
+import com.holub.rentcar.models.db.RentcarDB;
 
 import static org.junit.jupiter.api.Assertions.*;
 

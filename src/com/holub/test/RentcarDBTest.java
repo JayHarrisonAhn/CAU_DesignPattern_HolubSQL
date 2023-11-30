@@ -2,7 +2,7 @@ package com.holub.test;
 
 import com.holub.database.Cursor;
 import com.holub.database.Table;
-import com.holub.rentcar.RentcarDB;
+import com.holub.rentcar.models.db.RentcarDB;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
