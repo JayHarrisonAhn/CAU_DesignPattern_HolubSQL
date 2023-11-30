@@ -58,11 +58,11 @@ class HTMLExporterTest {
                     "</body>";
             StringBuffer sb = new StringBuffer();  // StringBuffer 객체 sb 생성
 
-            Writer out = new FileWriter("c:/dp2023/XMLExporter.xml");
+            Writer out = new FileWriter("c:/dp2023/XMLExporter.html");
             HTMLTestTable.export(new HTMLExporter(out));
             out.close();
 
-            BufferedReader reader = new BufferedReader(new FileReader("c:/dp2023/XMLExporter.xml"));
+            BufferedReader reader = new BufferedReader(new FileReader("c:/dp2023/XMLExporter.html"));
             String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append("\n"); // 읽은 내용을 StringBuffer에 추가
