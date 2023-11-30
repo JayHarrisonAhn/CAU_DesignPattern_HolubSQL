@@ -31,9 +31,8 @@ public class MainFrameController extends JFrame implements ActionListener, Chang
     }
 
     public void actionPerformed(ActionEvent e) {
-        model.setUserId(this.view.menuView.login.textField.getText());
         if (e.getSource().equals(view.menuSelectionView.loginBtn)) {
-            model.changeMenu("login");
+            model.setUserId(this.view.menuView.login.textField.getText());
         } else if (e.getSource().equals(view.menuSelectionView.infoBtn)) {
             model.changeMenu("info");
         } else if (e.getSource().equals(view.menuSelectionView.locationBtn)) {

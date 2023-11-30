@@ -1,14 +1,12 @@
 package com.holub.rentcar;
 
+import com.holub.database.Cursor;
+import com.holub.database.Selector;
+import com.holub.database.Table;
+import com.holub.rentcar.models.*;
 import com.holub.rentcar.models.db.RentcarDB;
 import com.holub.rentcar.models.db.RentcarFinder;
-import com.holub.rentcar.models.CarsFactory;
-import com.holub.rentcar.models.PlacesFactory;
-import com.holub.rentcar.models.row.Car;
-import com.holub.rentcar.models.row.CarType;
-import com.holub.rentcar.models.CarTypesFactory;
-import com.holub.rentcar.models.Selection;
-import com.holub.rentcar.models.row.Place;
+import com.holub.rentcar.models.row.*;
 
 import java.time.LocalDate;
 import java.time.chrono.IsoChronology;
@@ -20,6 +18,7 @@ import java.util.Set;
 public class MainFrameModel extends Observable {
     public String currentMenu = "test";
     public String userId = "";
+    public String userName = null;
     public ArrayList<Selection<CarType>> infos = new ArrayList<>();
     public ArrayList<Selection<Place>> places = new ArrayList<>();
     public ArrayList<Car> results = new ArrayList<>();
@@ -76,16 +75,25 @@ public class MainFrameModel extends Observable {
     }
 
     public void changeMenu(String menuId) {
-        if (this.userId.isEmpty()) {
-            return;
-        }
         this.currentMenu = menuId;
         setChanged();
         notifyObservers();
     }
 
     public void setUserId(String newId) {
-        this.userId = newId;
+        UsersFactory usersFactory = new UsersFactory();
+        ArrayList<User> userRow = usersFactory.createFrom(RentcarDB.orm.user.select(new Selector.Adapter() {
+            public boolean approve(Cursor[] tables) {
+                return tables[0].column("userId").equals(newId);
+            }
+        }));
+        if (userRow.isEmpty()) {
+            return;
+        }
+        User user = userRow.get(0);
+        this.userId = user.userId;
+        this.userName = user.userName;
+        this.currentMenu = "info";
         setChanged();
         notifyObservers();
     }
