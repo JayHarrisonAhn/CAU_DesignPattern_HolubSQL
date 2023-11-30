@@ -1,3 +1,5 @@
+package com.holub.test;
+
 import com.holub.database.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
