@@ -7,6 +7,10 @@ ___
 
 이후, 사용자가 선택한 차량의 대여 정보가 DB에 Update됩니다.
 ___
+## Application
+<p><img src="assets/Application_demo.gif" width="480" height="480" alt="importer"></p>
+
+___
 ## Application Use Case Diagrams
 <p><img src="assets/UseCaseDiagram.png" width="546" height="516" alt="importer"></p>
 
@@ -25,8 +29,8 @@ ___
   - HTML Exporter
   - XML Exporter
   - XML Importer
-  - Holub SQL Console Error Solved
-  - OrderBy, GroupBy, Distinct Keyword
+- Holub SQL Console Error Solved
+- OrderBy, GroupBy, Distinct Keyword
 ___
 ## Architecture
 ### Importer
@@ -46,7 +50,10 @@ ___
 <p><img src="./assets/MVC.png" width="586" height="471" alt="handler"></p>
 
 - Factory Method Pattern
-<p><img src="./assets/FactoryMethod.png" width="473" height="272" alt="handler"></p>
+<p><img src="./assets/FactoryMethod.png" width="410" height="375" alt="handler"></p>
+
+- Facade Pattern
+<p><img src="./assets/Facade.png" width="426" height="437" alt="handler"></p>
 
 ___
 ## Environment

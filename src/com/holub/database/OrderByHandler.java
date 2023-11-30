@@ -35,7 +35,7 @@ public class OrderByHandler extends TableHandler{
         Map<String, List<List<OrderByValue>>> map = createMap(table, keyIdx);
 
         List<String> keyList = new ArrayList<>(map.keySet());
-        Collections.sort(keyList, order.toLowerCase().equals("desc") ? Collections.reverseOrder() : null);
+        Collections.sort(keyList, createCustomComparator(order));
 
         int rowIdx = 0;
         for (String key : keyList) {
@@ -79,6 +79,27 @@ public class OrderByHandler extends TableHandler{
         return -1;
     }
 
+    private Comparator<String> createCustomComparator(String order) {
+        boolean isDesc = order.toLowerCase().equals("desc");
+
+        return (s1, s2) -> {
+            boolean isNumeric1 = isNumeric(s1);
+            boolean isNumeric2 = isNumeric(s2);
+
+            if (isNumeric1 && isNumeric2) {
+                return compareNumericValues(s1, s2, isDesc);
+            } else {
+                return isDesc ? s2.compareTo(s1) : s1.compareTo(s2);
+            }
+        };
+    }
+
+    private int compareNumericValues(String s1, String s2, boolean isDesc) {
+        double val1 = Double.parseDouble(s1);
+        double val2 = Double.parseDouble(s2);
+        return isDesc ? Double.compare(val2, val1) : Double.compare(val1, val2);
+    }
+
     private Map<String, List<List<OrderByValue>>> createMap(Table table, int keyIdx) {
         Map<String, List<List<OrderByValue>>> map = new HashMap<>();
         Cursor current = table.rows();
@@ -102,5 +123,9 @@ public class OrderByHandler extends TableHandler{
             map.computeIfAbsent(keyData, k -> new ArrayList<>()).add(value);
         }
         return map;
+    }
+
+    private boolean isNumeric(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?"); // 정수 및 실수 여부 체크
     }
 }

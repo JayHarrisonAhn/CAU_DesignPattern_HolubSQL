@@ -15,8 +15,8 @@ class GroupByHandlerTest {
     void setUp() {
         Map<String, String> aggregateColumn = new HashMap<>();
         aggregateColumn.put("score", "sum");
-        tableHandler = new OrderByHandler("sum_score", "asc");
-        tableHandler.SetSuccessor(new GroupByHandler(aggregateColumn, new String[] {"name", "id"}));
+        tableHandler = new GroupByHandler(aggregateColumn, new String[] {"name", "id"});
+        tableHandler.SetSuccessor(new OrderByHandler("sum_score", "asc") );
         table = new ConcreteTable("table", new String[]{ "name", "grade", "id", "score"});
         table.insert(new String[]{"bang", "4", "15411541", "90"});
         table.insert(new String[]{"ahn", "4", "12345678", "60"});
@@ -43,6 +43,7 @@ class GroupByHandlerTest {
                 while (targetIter.hasNext() && originIter.hasNext()) {
                     String targetItem = String.valueOf(targetIter.next());
                     String originItem = String.valueOf(originIter.next());
+
                     assertEquals(targetItem, originItem);
                 }
             }
