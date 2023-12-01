@@ -63,10 +63,10 @@ ___
 <p><img src="./assets/MVC.png" width="586" height="471" alt="handler"></p>
 
 - Factory Method Pattern
-<p><img src="./assets/FactoryMethod.png" width="409" height="410" alt="handler"></p>
+<p><img src="./assets/FactoryMethod.png" width="512" height="471" alt="handler"></p>
 
-- Facade Pattern
-<p><img src="./assets/Facade.png" width="426" height="437" alt="handler"></p>
+- Facade & Singleton Pattern
+<p><img src="./assets/Facade_Singleton.png" width="409" height="410" alt="handler"></p>
 
 - Strategy Pattern
 <p><img src="./assets/Strategy.png" width="378" height="285" alt="handler"></p>
